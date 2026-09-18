@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "ABO Browser Observer",
+  "version": "0.1.0",
+  "description": "Phase 1 local browser observer for Autonomous Browser Observer. Read-only; credentials redacted.",
+  "permissions": ["storage", "tabs", "scripting", "webRequest", "activeTab"],
+  "host_permissions": ["<all_urls>", "http://127.0.0.1:3847/*", "http://localhost:3847/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "file://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["http://*/*", "https://*/*", "file://*/*"]
+    }
+  ],
+  "action": {
+    "default_title": "ABO Observer",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

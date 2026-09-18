@@ -1,0 +1,22 @@
+{
+  "name": "@abo/mcp-observer",
+  "version": "0.3.0",
+  "description": "Phase 3 — read-only Observer MCP tools for Cursor",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "abo-mcp-observer": "./src/server.ts"
+  },
+  "scripts": {
+    "start": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@abo/extension",
+  "version": "0.4.0",
+  "description": "Phase 4 — Chrome/Edge MV3 Browser Observer + agent checks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx scripts/build.ts",
+    "test": "tsx --test tests/**/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "verify": "tsx scripts/verify-ingest.ts"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.0",
+    "@types/node": "^22.10.5",
+    "esbuild": "^0.24.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

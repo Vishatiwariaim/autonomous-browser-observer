@@ -1,0 +1,23 @@
+{
+  "name": "@abo/cursor-bridge",
+  "version": "0.3.0",
+  "description": "Phase 3 — Cursor ACP client bridge (JSON-RPC over stdio)",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "test": "tsx --test tests/**/*.test.ts"
+  },
+  "dependencies": {
+    "@abo/controller": "*",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

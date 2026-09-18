@@ -1,0 +1,20 @@
+services:
+  observer:
+    build: .
+    ports:
+      - "3847:3847"
+    environment:
+      OBSERVER_HOST: "0.0.0.0"
+      OBSERVER_PORT: "3847"
+      OBSERVER_DATA_DIR: "/data"
+      # Shared secret — set the same in extension Options as API token
+      ABO_API_TOKEN: "${ABO_API_TOKEN:-changeme-abo-token}"
+      ABO_ACP_MODE: "${ABO_ACP_MODE:-mock}"
+      ABO_AUTOPILOT: "${ABO_AUTOPILOT:-0}"
+      OBSERVER_PUBLIC_URL: "${OBSERVER_PUBLIC_URL:-http://127.0.0.1:3847}"
+    volumes:
+      - abo_data:/data
+    restart: unless-stopped
+
+volumes:
+  abo_data:

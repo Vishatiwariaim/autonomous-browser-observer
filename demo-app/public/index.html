@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo Login</title>
+    <style>
+      body {
+        font-family: Georgia, serif;
+        max-width: 420px;
+        margin: 3rem auto;
+        padding: 0 1rem;
+        background: linear-gradient(180deg, #eef3f8, #d9e2ec);
+      }
+      label { display: block; margin: 0.75rem 0 0.25rem; }
+      input, button { font: inherit; padding: 0.45rem 0.6rem; width: 100%; box-sizing: border-box; }
+      button { margin-top: 1rem; cursor: pointer; }
+      #error { color: #b42318; min-height: 1.2rem; margin-top: 0.75rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Demo Login</h1>
+    <p>Use username <code>demo</code> / password <code>demo123</code>.</p>
+    <form id="login-form">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" value="demo" autocomplete="username" />
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" value="demo123" autocomplete="current-password" />
+      <button id="login-btn" type="submit">Login</button>
+    </form>
+    <p id="error"></p>
+    <script>
+      document.getElementById("login-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const err = document.getElementById("error");
+        err.textContent = "";
+        try {
+          const res = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+          const body = await res.json();
+          if (!res.ok) {
+            err.textContent = "Login failed: " + (body.error || res.status);
+            console.error("Login API error", res.status, body.error);
+            return;
+          }
+          location.href = body.redirectTo || "/dashboard";
+        } catch (ex) {
+          err.textContent = String(ex);
+          console.error(ex);
+        }
+      });
+    </script>
+  </body>
+</html>

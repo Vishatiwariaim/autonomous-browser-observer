@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ABO Observer</title>
+    <style>
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        margin: 0;
+        padding: 12px;
+        width: 300px;
+        background: #0f1419;
+        color: #e7ecf3;
+      }
+      h1 { font-size: 14px; margin: 0 0 8px; }
+      label { display: block; font-size: 11px; color: #8b9bb4; margin-top: 8px; }
+      input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 4px;
+        padding: 6px;
+        border-radius: 6px;
+        border: 1px solid #2a3a50;
+        background: #1a2332;
+        color: #e7ecf3;
+      }
+      .row { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+      button {
+        margin-top: 8px;
+        width: 100%;
+        padding: 8px;
+        border: 0;
+        border-radius: 6px;
+        background: #3d9cf0;
+        color: #041018;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button.secondary { background: #243447; color: #e7ecf3; }
+      .muted { font-size: 11px; color: #8b9bb4; margin-top: 8px; word-break: break-all; }
+      .status { font-size: 12px; margin-top: 8px; }
+      .ok { color: #3ecf8e; }
+      .err { color: #ff7b72; }
+    </style>
+  </head>
+  <body>
+    <h1>ABO Browser Observer</h1>
+    <div class="row">
+      <input id="enabled" type="checkbox" checked />
+      <label for="enabled" style="margin: 0">Observation enabled</label>
+    </div>
+    <label for="endpoint">Local observer endpoint</label>
+    <input id="endpoint" type="text" value="http://127.0.0.1:3847" />
+    <p class="muted" id="session"></p>
+    <button id="ping" type="button" class="secondary">Test connection</button>
+    <button id="save" type="button">Save</button>
+    <button id="snapshot" type="button">Capture snapshot + screenshot</button>
+    <button id="newSession" type="button" class="secondary">New session</button>
+    <p class="status" id="status"></p>
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>

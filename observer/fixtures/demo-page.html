@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ABO Demo Page — Phase 1</title>
+    <style>
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        max-width: 720px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        background: linear-gradient(180deg, #f7f3ea, #e8dfd0);
+        color: #1c1917;
+      }
+      h1 { font-size: 1.8rem; }
+      button, input, a.button {
+        font: inherit;
+        margin: 0.35rem 0.25rem 0.35rem 0;
+        padding: 0.4rem 0.7rem;
+        display: inline-block;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid #8a7a66;
+        background: #fff8ee;
+        cursor: pointer;
+      }
+      .panel { margin: 1.25rem 0; padding: 1rem; border: 1px solid #c4b5a0; background: rgba(255,255,255,0.55); }
+      #log { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 0.85rem; min-height: 4rem; }
+    </style>
+  </head>
+  <body>
+    <h1>ABO Demo Page</h1>
+    <p>This page triggers console errors, network failures, and clickable controls for Phase 1 observation tests.</p>
+
+    <div class="panel">
+      <h2>Actions</h2>
+      <button id="btn-click" type="button">Primary action</button>
+      <button id="btn-secondary" type="button">Secondary action</button>
+      <button id="btn-console" type="button">Trigger console.error</button>
+      <button id="btn-throw" type="button">Trigger uncaught error</button>
+      <button id="btn-network" type="button">Trigger network 404</button>
+      <button id="btn-fetch-fail" type="button">Trigger fetch failure</button>
+      <a class="button" id="link-page-b" href="/demo/page-b">Go to Page B</a>
+    </div>
+
+    <div class="panel">
+      <h2>Form (values are never stored)</h2>
+      <label>Username <input id="username" name="username" type="text" value="demo-user" /></label><br />
+      <label>Password <input id="password" name="password" type="password" value="super-secret" /></label><br />
+      <label>API Token <input id="api_token" name="api_token" type="text" value="sk-should-never-be-stored" /></label>
+    </div>
+
+    <div class="panel">
+      <h2>Event log</h2>
+      <div id="log"></div>
+    </div>
+
+    <script>
+      const logEl = document.getElementById("log");
+      function log(msg) {
+        logEl.textContent += msg + "\n";
+      }
+
+      document.getElementById("btn-click").addEventListener("click", () => {
+        log("Primary action clicked");
+      });
+      document.getElementById("btn-secondary").addEventListener("click", () => {
+        log("Secondary action clicked");
+      });
+
+      document.getElementById("btn-console").addEventListener("click", () => {
+        console.error("ABO demo deliberate console error");
+        log("console.error fired");
+      });
+
+      document.getElementById("btn-throw").addEventListener("click", () => {
+        log("about to throw");
+        setTimeout(() => {
+          throw new Error("ABO demo uncaught exception");
+        }, 0);
+      });
+
+      document.getElementById("btn-network").addEventListener("click", async () => {
+        try {
+          const res = await fetch("/abo-demo-missing-endpoint-" + Date.now());
+          log("network status " + res.status);
+        } catch (e) {
+          log("network error " + e);
+        }
+      });
+
+      document.getElementById("btn-fetch-fail").addEventListener("click", async () => {
+        try {
+          await fetch("http://127.0.0.1:9/definitely-down");
+        } catch (e) {
+          log("fetch failed as expected: " + e);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ABO Extension Test Page</title>
+    <style>
+      body {
+        font-family: Georgia, serif;
+        max-width: 640px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        background: linear-gradient(160deg, #eef3f8, #d9e4ef);
+        color: #1a2433;
+      }
+      h1 { font-size: 1.6rem; }
+      button, input { display: block; margin: 0.6rem 0; padding: 0.5rem 0.75rem; }
+      .err { color: #a11; }
+    </style>
+  </head>
+  <body>
+    <h1>ABO Extension Test</h1>
+    <p>Use with the loaded unpacked extension. Actions below exercise capture paths.</p>
+    <button id="btn" type="button">Click me</button>
+    <label>Email <input id="email" name="email" type="email" value="user@example.com" /></label>
+    <label>Password <input id="password" name="password" type="password" value="SuperSecret123!" /></label>
+    <label>Token field <input id="api_key" name="api_key" type="text" value="sk_live_should_redact" /></label>
+    <button id="consoleErr" type="button">Trigger console.error</button>
+    <button id="netFail" type="button">Trigger 404 fetch</button>
+    <button id="mutate" type="button">Mutate DOM</button>
+    <div id="box"></div>
+    <script>
+      document.getElementById("btn").onclick = () => {
+        document.getElementById("box").textContent = "clicked " + new Date().toISOString();
+      };
+      document.getElementById("consoleErr").onclick = () => {
+        console.error("ABO test intentional error", { code: "TEST_ERR" });
+      };
+      document.getElementById("netFail").onclick = () => {
+        fetch("/abo-demo-missing-endpoint-" + Date.now()).catch(() => {});
+      };
+      document.getElementById("mutate").onclick = () => {
+        const el = document.createElement("p");
+        el.textContent = "mutation " + Date.now();
+        document.getElementById("box").appendChild(el);
+      };
+    </script>
+  </body>
+</html>

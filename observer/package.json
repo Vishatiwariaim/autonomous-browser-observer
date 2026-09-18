@@ -1,0 +1,40 @@
+{
+  "name": "@abo/observer",
+  "version": "0.1.0",
+  "description": "Phase 2 — Browser observation + controller + AI issue detection",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx scripts/build.ts",
+    "dev": "tsx watch src/server/index.ts",
+    "start": "tsx src/server/index.ts",
+    "test": "tsx --test tests/**/*.test.ts",
+    "demo": "tsx scripts/demo.ts",
+    "demo:phase2": "tsx scripts/phase2-demo.ts",
+    "demo:phase3": "tsx scripts/phase3-e2e.ts",
+    "demo:phase4": "tsx scripts/phase4-e2e.ts",
+    "test:extension": "tsx scripts/extension-e2e.ts"
+  },
+  "dependencies": {
+    "@abo/ai": "*",
+    "@abo/controller": "*",
+    "@abo/cursor-bridge": "*",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "uuid": "^11.0.5",
+    "ws": "^8.21.3",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "@types/ws": "^8.18.1",
+    "esbuild": "^0.24.2",
+    "playwright": "^1.50.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

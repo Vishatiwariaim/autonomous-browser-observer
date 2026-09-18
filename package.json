@@ -1,0 +1,33 @@
+{
+  "name": "autonomous-browser-observer",
+  "version": "0.3.0",
+  "description": "AI-powered local browser observation and development system",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "ai",
+    "controller",
+    "cursor-bridge",
+    "mcp-observer",
+    "demo-app",
+    "observer",
+    "extension"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@abo/observer && npm run build --workspace=@abo/extension",
+    "dev": "npm run dev --workspace=@abo/observer",
+    "start": "npm run start --workspace=@abo/observer",
+    "start:demo": "npm run start --workspace=@abo/demo-app",
+    "test": "npm run test --workspaces --if-present",
+    "demo": "npm run demo --workspace=@abo/observer",
+    "demo:phase2": "npm run demo:phase2 --workspace=@abo/observer",
+    "demo:phase3": "npm run demo:phase3 --workspace=@abo/observer",
+    "demo:phase4": "npm run demo:phase4 --workspace=@abo/observer",
+    "test:extension": "npm run test:extension --workspace=@abo/observer",
+    "build:extension": "npm run build --workspace=@abo/extension",
+    "verify:extension": "tsx extension/scripts/verify-ingest.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

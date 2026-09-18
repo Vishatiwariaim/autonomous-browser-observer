@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ABO Observer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>ABO Observer</h1>
+      <p class="sub">Read-only · local only</p>
+    </header>
+
+    <section class="status-card">
+      <div class="row">
+        <span class="label">Status</span>
+        <span id="connBadge" class="badge unknown">Checking…</span>
+      </div>
+      <div class="row">
+        <span class="label">Observer</span>
+        <span id="observerUrl" class="mono truncate">—</span>
+      </div>
+      <div class="row">
+        <span class="label">Session</span>
+        <span id="sessionId" class="mono truncate">—</span>
+      </div>
+      <div class="row">
+        <span class="label">Events sent</span>
+        <span id="eventsSent">0</span>
+      </div>
+      <div class="row">
+        <span class="label">Queue</span>
+        <span id="queueDepth">0</span>
+      </div>
+      <div class="row">
+        <span class="label">Last OK</span>
+        <span id="lastOk">—</span>
+      </div>
+      <p id="lastError" class="error hidden"></p>
+    </section>
+
+    <section class="toggles">
+      <label><input type="checkbox" id="enabled" /> Observation enabled</label>
+      <label><input type="checkbox" id="captureClicks" /> Capture clicks</label>
+      <label><input type="checkbox" id="captureInputs" /> Capture inputs (redacted)</label>
+      <label><input type="checkbox" id="captureConsole" /> Capture console errors</label>
+      <label><input type="checkbox" id="captureNetwork" /> Capture network failures</label>
+      <label><input type="checkbox" id="captureDomMutations" /> Capture DOM mutations</label>
+      <label><input type="checkbox" id="captureScreenshots" /> Screenshots (manual)</label>
+      <label><input type="checkbox" id="redactSensitive" /> Redact sensitive data</label>
+    </section>
+
+    <section class="actions">
+      <button type="button" id="btnPing">Reconnect / Ping</button>
+      <button type="button" id="btnShot">Capture screenshot</button>
+      <button type="button" id="btnDash">Open dashboard</button>
+      <button type="button" id="btnOptions">Settings</button>
+    </section>
+
+    <footer>
+      <span id="version"></span>
+      · Never captures passwords or tokens
+    </footer>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

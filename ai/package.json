@@ -1,0 +1,17 @@
+{
+  "name": "@abo/ai",
+  "version": "0.2.0",
+  "description": "Phase 2 — local AI observation / analysis (no code modification)",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3"
+  }
+}

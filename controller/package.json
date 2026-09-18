@@ -1,0 +1,18 @@
+{
+  "name": "@abo/controller",
+  "version": "0.2.0",
+  "description": "Phase 2 — event grouping, issue detection, task generation",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@abo/ai": "*",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3"
+  }
+}

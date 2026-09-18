@@ -1,0 +1,136 @@
+:root {
+  --bg: #0f1419;
+  --panel: #1a2332;
+  --text: #e7ecf3;
+  --muted: #8b9bb4;
+  --ok: #3dd68c;
+  --bad: #f07178;
+  --warn: #e6c07b;
+  --accent: #5b9fd4;
+  --border: #2a3548;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 320px;
+  padding: 14px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.sub {
+  margin: 2px 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.status-card,
+.toggles,
+.actions {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.label {
+  color: var(--muted);
+}
+
+.mono {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 11px;
+}
+
+.truncate {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.badge.ok {
+  background: rgba(61, 214, 140, 0.15);
+  color: var(--ok);
+}
+
+.badge.bad {
+  background: rgba(240, 113, 120, 0.15);
+  color: var(--bad);
+}
+
+.badge.unknown {
+  background: rgba(230, 192, 123, 0.15);
+  color: var(--warn);
+}
+
+.toggles label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.actions {
+  display: grid;
+  gap: 6px;
+}
+
+button {
+  background: #243044;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+.error {
+  color: var(--bad);
+  font-size: 11px;
+  margin: 6px 0 0;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  color: var(--muted);
+  font-size: 10px;
+  text-align: center;
+}
