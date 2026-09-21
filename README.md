@@ -28,6 +28,13 @@ Server pe Observer chalta hai (`0.0.0.0:3847`); dusre PC pe sirf `extension/dist
 
 Docker: `docker compose up -d --build`
 
+### Cursor agent (is / dusre PC pe)
+
+1. Repo Cursor mein kholo  
+2. Copy `mcp.json.example` → `.cursor/mcp.json`  
+3. `OBSERVER_URL` + `ABO_API_TOKEN` set karo (host: `http://127.0.0.1:3847`)  
+4. Cursor Settings → MCP → enable `abo-observer`
+
 ### Load the extension (Chrome / Edge)
 
 ```bash

@@ -1,0 +1,15 @@
+# ABO Observer MCP — copy to `.cursor/mcp.json` on each PC
+# On the host PC you can use http://127.0.0.1:3847
+# On other PCs use the LAN URL, e.g. http://172.16.1.15:3847
+{
+  "mcpServers": {
+    "abo-observer": {
+      "command": "npx.cmd",
+      "args": ["tsx", "mcp-observer/src/server.ts"],
+      "env": {
+        "OBSERVER_URL": "http://172.16.1.15:3847",
+        "ABO_API_TOKEN": "REPLACE_WITH_TOKEN"
+      }
+    }
+  }
+}

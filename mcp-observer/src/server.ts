@@ -14,13 +14,19 @@ const OBSERVER_URL = (
   process.env.OBSERVER_URL ?? "http://127.0.0.1:3847"
 ).replace(/\/$/, "");
 
+const ABO_API_TOKEN = (process.env.ABO_API_TOKEN ?? "").trim();
+
 async function api<T>(path: string, init?: RequestInit): Promise<T> {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    ...(init?.headers as Record<string, string> | undefined),
+  };
+  if (ABO_API_TOKEN) {
+    headers["X-ABO-Token"] = ABO_API_TOKEN;
+  }
   const res = await fetch(`${OBSERVER_URL}${path}`, {
     ...init,
-    headers: {
-      "Content-Type": "application/json",
-      ...(init?.headers ?? {}),
-    },
+    headers,
   });
   if (!res.ok) {
     const text = await res.text();
